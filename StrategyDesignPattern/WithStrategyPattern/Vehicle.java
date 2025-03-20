@@ -5,6 +5,7 @@ public class Vehicle{
     //object create -> DriveStrategyInterface
     DriveStrategyInterface driveStrategyObject;
 
+//    Constructor injection.
     //Constructor vehicle class - obj
     Vehicle(DriveStrategyInterface driveStrategyObject) {
         this.driveStrategyObject = driveStrategyObject;
