@@ -39,3 +39,27 @@
         ✅ When building event-driven systems or real-time applications.
 
 
+------------------- DECORATOR DESIGN PATTERN(STRUCTURAL) -----------------
+
+- Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
+- Instead of creating multiple subclasses to extend functionality, you use decorators to wrap objects and add features on the fly.
+- Asked in interviews
+- Question
+        - Pizza with toppings
+        - coffee and toppings
+        - car with features
+
+- Decorator has both "is-a" and "has-a" relationship.
+
+- Example Use Cases
+        ✅ Adding features to UI components (e.g., scrollbars, borders)
+        ✅ Adding functionality like logging, caching, or encryption without modifying the core logic
+        ✅ Extending functionality in file handling, stream processing, etc.
+
+- Why this pattern?
+    - avoid Class explosion -> we can do many permutations and combinations without creating class for each.
+
+- When to Use the Decorator Pattern?
+    ✅ When you want to dynamically add features to an object without modifying its class.
+    ✅ When extending functionality using inheritance would lead to class explosion.
+    ✅ When you want to combine different features flexibly (e.g., adding both milk and sugar).
