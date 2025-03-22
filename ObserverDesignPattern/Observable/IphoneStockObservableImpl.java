@@ -7,6 +7,8 @@ import java.util.List;
 
 public class IphoneStockObservableImpl implements StockStatusAmazonObservable{
     //Q1: Why we are using NotificationAlertObserver
+
+//    These are the list of customers(observers) who clicked on "notify-me" button for the iphone.
     public List<NotificationAlertObserver> observerList = new ArrayList<>();
     public int stockCount = 0;
 
@@ -33,6 +35,8 @@ public class IphoneStockObservableImpl implements StockStatusAmazonObservable{
 
     @Override
     public void setStockCount(int newStockAdded) {
+//        we are notifying on item is not more out-of-stock -> changes as per the question.
+//        Business Logic will mostly go here.
         if(stockCount == 0){
             notifySubscribers();
         }

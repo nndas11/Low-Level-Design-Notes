@@ -1,0 +1,41 @@
+-------------- STRATEGY DESIGN PATTERN(BEHAVIOURAL) ----------------
+
+-   Strategy design pattern  helps achieve OCP by defining a family of algorithms (strategies) that can be selected at runtime.
+
+-   Key Takeaways
+          ✔ Loose Coupling                – Business logic is decoupled from specific payment methods.
+          ✔ Open/Closed Principle (OCP)   – We can add new strategies without modifying existing code.
+          ✔ Scalability                   – Easy to extend, test, and maintain.
+
+-   Same as the payment method example for the Open/ Closed principle.
+
+-   Parent class have one default definition, then for example, among 3 child class 2 need to override the default
+    behaviour with special one but both are same, then will result in code duplication.
+    So we do is create an interface with that method and then implement this interface with different classes which have different behaviour(like payment methods or driving capability)
+    Then the class will have an object of the type interface, and we do constructor injection, so anything can be passed.
+
+
+---------------- OBSERVER DESIGN PATTERN(BEHAVIOURAL) -----------------
+
+
+-   The Observer Pattern is a behavioral design pattern used when one object (Subject) changes its state and needs to notify multiple dependent objects (Observers) about the change automatically.
+-   It follows the Publisher-Subscriber Model, where:
+
+        -   Subject (Observable): Maintains a list of observers and notifies them of changes.
+        -   Observers (Subscribers): Act upon receiving updates from the subject.
+
+- Interview question -> implement the notify-me button for the item which is currently out-of-stock in the amazon web page.
+
+-   Example Use Cases
+        ✔ Real-time notifications – Stock price updates, weather alerts, cricket score updates, item came on stock.
+        ✔ Event-driven systems – UI event listeners in GUI applications
+        ✔ Message broadcasting – Chat applications, RSS feeds
+
+-   ✅ With Observer Pattern	->  Loosely coupled, scalable, dynamically add/remove observers.
+
+-   When to Use the Observer Pattern?
+        ✅ When multiple objects need to be notified of state changes in another object.
+        ✅ When you want to decouple the subject from observers.
+        ✅ When building event-driven systems or real-time applications.
+
+
