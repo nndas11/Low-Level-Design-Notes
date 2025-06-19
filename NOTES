@@ -91,6 +91,11 @@
 - Abstract Factory: Gives you a set of related objects (e.g., car + engine + tires) that work well together.
 
 
+Real world use cases in software development IMP
+- Database connection -> connecting to different databases like postgresql, mongo etc.. based on parameter they return the correct one.
+- Logging Mechanism -> Different logger like console, db logger etc. based on requirement.
+
+- Any where there is object -> we could use factory pattern.
 
 ---------------------------- ABSTRACT FACTORY PATTERN --------------------------------
 

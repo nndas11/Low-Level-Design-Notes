@@ -1,4 +1,4 @@
-package CreationalDesignPattern.FactoryPattern.AbstractFactoryPattern;
+package BehaviouralDesignPatterns.AbstractFactoryPattern;
 
 public class main {
 }
