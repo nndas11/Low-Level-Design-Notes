@@ -99,6 +99,11 @@ Real world use cases in software development IMP
 
 ---------------------------- ABSTRACT FACTORY PATTERN --------------------------------
 
+- It’s like a factory of factories.
+- Here when new types get added -> Instead of modifying the factory method(which will violate the Open/ Closed Principle) -> We create a separate factory for the new type.
+- These factories makes the system more scalable and extensible -> encapsulating the logic.
+- Examples can be similar as above.
+- Mostly not that much seen in interview -> we will be probably using simple factory pattern -> these are actually used in large code bases.
 - The Abstract Factory Pattern provides an interface to create families of related or dependent objects without specifying their concrete classes.
 - It’s a design pattern that lets you create families of related objects without specifying their exact classes.
 
