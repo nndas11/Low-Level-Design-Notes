@@ -23,6 +23,6 @@ public class EntryGate extends Gate{
         if (parkingSpot != null){
             return new Ticket(vehicle, parkingSpot);
         }
-        throw new RuntimeException("Unable to Park the Vehicle: " + vehicle);
+        throw new RuntimeException("Unable to Park the Vehicle: " + vehicle.getLicensePlate());
     }
 }

@@ -1,5 +1,8 @@
 package BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle;
 
+
+//  Ask interviewer before -> if needed as it can be an overkill sometimes.
+
 public class VehicleFactory {
 
     // can be static or not -> depends on use cases.

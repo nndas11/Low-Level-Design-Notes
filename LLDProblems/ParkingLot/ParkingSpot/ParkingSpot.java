@@ -4,16 +4,24 @@ package BehaviouralDesignPatterns.LLDProblems.ParkingLot.ParkingSpot;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle.Vehicle;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle.VehicleType;
 
+
+//  We need to find the spot which is nearest to the gate.
+//  So for this, we have a variable called distanceFromGate -> which has how far is the spot away.
+//  Another way would be to use coordinates for the gate and spot.
+//  Then use Euclidean distance formula to find the distance.
+
 public abstract class ParkingSpot {
     protected final int spotNumber;
     protected final VehicleType vehicleType;
     protected boolean isOccupied;
     protected Vehicle vehicle;
+    protected final int distanceFromGate;
 
-    public ParkingSpot(int spotNumber, VehicleType vehicleType) {
+    public ParkingSpot(int spotNumber, VehicleType vehicleType, int distanceFromGate) {
         this.spotNumber = spotNumber;
         this.vehicleType = vehicleType;
         this.isOccupied = false;
+        this.distanceFromGate = distanceFromGate;
     }
 
 //    synchronized -> is for ensuring thread safety
@@ -26,6 +34,10 @@ public abstract class ParkingSpot {
             return true;
         }
         return false;
+    }
+
+    public int getDistanceFromGate() {
+        return distanceFromGate;
     }
 
     public synchronized void unPark(){

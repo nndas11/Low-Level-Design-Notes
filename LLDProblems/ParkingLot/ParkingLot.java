@@ -5,11 +5,20 @@ import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Fee.FixedFeeStrategy;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Gate.EntryGate;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Gate.ExitGate;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.ParkingSpot.ParkingSpot;
+import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Payments.Cash;
+import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Payments.PaymentStrategy;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle.Vehicle;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle.VehicleType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+
+//  So we have lot -> floor -> spot.
+//  To find the correct spot is the responsibility of floor as it contains the spots
+//  floor just delegates this responsibility.
 
 
 //  Need to convert to singleton design pattern.
@@ -39,17 +48,43 @@ public class ParkingLot {
         return parkingLotInstance;
     }
 
+//    Whenever there is doubt in the usage of streams just use for-loop.
 
     public List<ParkingSpot> getAvailableSlots(VehicleType vehicleType){
-        return null;
+        return parkingFloors.stream()
+                .flatMap(floor -> floor.getAvailableSpots(vehicleType).stream())
+                .collect(Collectors.toList());
+
+    }
+
+    public Optional<ParkingSpot> getAvailableSpot(VehicleType vehicleType){
+        return parkingFloors.stream()
+                .map(floor -> floor.getAvailableSpot(vehicleType))
+                .filter(Optional::isPresent)                      // Keep only non-empty optionals
+                .map(Optional::get)                                // Unwrap the Optional
+                .findFirst();
     }
 
     public ParkingSpot parkVehicle(Vehicle vehicle){
-        return null;
+        for (ParkingFloor floor: parkingFloors){
+            ParkingSpot spot = floor.parkVehicle(vehicle);
+            if(spot != null){
+                return spot;
+            }
+
+        }
+        throw new RuntimeException("Unable to Park Vehicle");
     }
 
     public boolean unParkVehicle(ParkingSpot parkingSpot){
-        return true;
+        return parkingFloors.stream()
+                .filter(floor -> floor.getParkingSpots().contains(parkingSpot))
+                .findFirst()
+                .map(floor -> {
+                    floor.unPark(parkingSpot);
+                    return true;
+                })
+                .orElse(false);
     }
 
     public void addParkingFloor(ParkingFloor parkingFloor){
