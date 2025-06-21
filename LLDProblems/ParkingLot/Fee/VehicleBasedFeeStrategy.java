@@ -5,8 +5,7 @@ import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle.VehicleType;
 
 import java.util.Map;
 
-public class VehicleBasedFreeStrategy implements FeeStrategy{
-
+public class VehicleBasedFeeStrategy implements FeeStrategy{
     private final static Map<VehicleType, Double> hourlyRate = Map.of(
             VehicleType.CAR, 20.0,
             VehicleType.BIKE, 10.0
@@ -19,3 +18,5 @@ public class VehicleBasedFreeStrategy implements FeeStrategy{
         return hours * hourlyRate.get(ticket.getVehicle().getVehicleType());
     }
 }
+
+

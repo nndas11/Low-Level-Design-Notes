@@ -4,17 +4,20 @@ import BehaviouralDesignPatterns.LLDProblems.ParkingLot.ParkingSpot.ParkingSpot;
 import BehaviouralDesignPatterns.LLDProblems.ParkingLot.Vehicle.Vehicle;
 
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Ticket {
 
-    private final String ticketId;
+    private static final AtomicInteger id = new AtomicInteger(1);
+
+    private final int ticketId;
     private final Vehicle vehicle;
     private final ParkingSpot parkingSpot;
     private final long entryTimeStamp;
     private long exitTimeStamp;
 
-    public Ticket(String ticketId, Vehicle vehicle, ParkingSpot parkingSpot) {
-        this.ticketId = ticketId;
+    public Ticket( Vehicle vehicle, ParkingSpot parkingSpot) {
+        this.ticketId = id.getAndIncrement();
         this.vehicle = vehicle;
         this.parkingSpot = parkingSpot;
         this.entryTimeStamp = new Date().getTime();
@@ -24,7 +27,7 @@ public class Ticket {
         this.exitTimeStamp = new Date().getTime();
     }
 
-    public String getTicketId() {
+    public int getTicketId() {
         return ticketId;
     }
 
