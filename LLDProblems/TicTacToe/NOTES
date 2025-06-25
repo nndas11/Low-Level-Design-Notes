@@ -1,0 +1,32 @@
+
+
+    -   PLAYER -> BOARD -> 2 TYPES OF PLAYING PIECES
+    -   GAME -> TOP CLASS -> SHOULD WE NEED?
+
+
+    - PLAYERS INTERACT WITH GAME AND PLACE PLAYING PIECES ON BOARD
+
+
+- Method to check game won or not -> should go in the BOARD class ->
+- because the board holds the data needed to evaluate it, and it's a board-level concern.
+-
+
+
+
+- The main part of the problem -> the algorithm to check if a person have won the game or not -> this is only there to check in the question.
+- We can do O(n) solution but even that should be better to O(1)
+
+- The best way would be
+- Use array to keep track of each row
+- Array for each col
+- Diagonal and Anti-diagonal count
+
+- so for +1 and -1 value -> if no issue of extensibilty and there shouldn't be as the game always had only two symbols.
+- we have to keep all this variables in the board class -> as the placing method is here.
+
+- If we want to extend to more players, then instead of array
+- Use HashMap of player id ->  score
+- Each player is assigned 1 symbol only, so keeping track of played id to count is equivalent to symbol to count.
+
+
+
