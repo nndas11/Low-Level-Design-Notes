@@ -2,9 +2,7 @@ package BehaviouralDesignPatterns.LLDProblems.SnakeNLadder;
 
 import BehaviouralDesignPatterns.LLDProblems.SnakeNLadder.Dice.Dice;
 import BehaviouralDesignPatterns.LLDProblems.SnakeNLadder.Dice.SingleDice;
-import BehaviouralDesignPatterns.LLDProblems.SnakeNLadder.Jump.JumpEntity;
-import BehaviouralDesignPatterns.LLDProblems.SnakeNLadder.Jump.Ladder;
-import BehaviouralDesignPatterns.LLDProblems.SnakeNLadder.Jump.Snake;
+import BehaviouralDesignPatterns.LLDProblems.SnakeNLadder.Jump.*;
 
 import java.util.Arrays;
 import java.util.Deque;
@@ -16,18 +14,34 @@ public class Game {
     private final Dice dice;
     private final Deque<Player> players;
 
-    Game(Board board, List<Player> players, Dice dice){
+    private static Game instance;
+
+    private Game(Board board, List<Player> players, Dice dice){
         this.board = board;
         this.players = new LinkedList<>(players);
         this.dice = dice;
     }
 
-    Game(){
+    private Game(){
         this.board = new Board(100);
         this.dice = new SingleDice();
         this.players = new LinkedList<>(Arrays.asList(new Player("Player 1"), new Player("Player 2")));
-        this.board.addJumpEntity(new Snake(87, 20));
-        this.board.addJumpEntity(new Ladder(2, 100));
+        this.board.addJumpEntity(JumpEntityFactory.createJumpEntity(JumpEntityType.SNAKE, 56, 2));
+        this.board.addJumpEntity(JumpEntityFactory.createJumpEntity(JumpEntityType.LADDER, 2, 100));
+    }
+
+    public static Game getInstance(){
+        if(instance == null){
+            return new Game();
+        }
+        return instance;
+    }
+
+    public static Game getInstance(Board board, List<Player> players, Dice dice) {
+        if (instance == null) {
+            instance = new Game(board, players, dice);
+        }
+        return instance;
     }
 
     public void startGame(){

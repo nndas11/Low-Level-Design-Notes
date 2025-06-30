@@ -10,8 +10,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Game snakeAndLadder = new Game();
-        snakeAndLadder.startGame();
+//        Game snakeAndLadder = new Game();
+        Game.getInstance().startGame();
 
 //        Board board = new Board(100);
 //        board.addJumpEntity(new Snake(99, 54));
