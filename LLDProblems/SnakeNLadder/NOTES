@@ -1,0 +1,38 @@
+
+
+ALWAYS BOTTOM UP APPROACH
+
+-   Player
+-   Snake
+-   Ladder
+-   Dice
+-   Board
+-   Game
+
+-   Requirement Gathering
+
+-   Design and all coding changes based on whether we are implementing using CELLS or not.
+
+-   In SNAKE AND LADDER -> we are doing position by NOT ROW and COLUMN -> But by just position -> we have number 1 - 100.
+
+-   Very Important -> do we need cells -> it can be an overkill sometimes
+    - As we just have snakes and ladder only but ask with interviewer
+    - Currently, I’m mapping snakes and ladders directly by their start positions.
+    But if we wanted to support richer game mechanics or advanced rules (e.g., traps, power-ups, or dynamic entities),
+    I’d introduce a Cell class holding references to any entity present on that cell
+
+-   Single Dice or Multi Dice -> Need to be extensible
+        - Two ways
+            -   Have diceCount variable inside the Dice Class
+            -   Have Dice interface -> extend to Single Dice and Multi Dice
+
+
+-   Snake and Ladder have same properties -> start and end position
+    -   Would be good idea to create an interface -> maybe call JumpEntity and the other two implements it.
+
+-   AREAS WHERE WE CAN HAVE DESIGN PATTERNS
+
+-   Game should be singleton
+-   Dice should be singleton
+
+-   Snake and ladder can have a factory class.
