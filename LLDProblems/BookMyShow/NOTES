@@ -1,0 +1,31 @@
+   there are time when you need bidirectional flow.
+
+   to check if they will be needed -> just see whether you would be needed to access those information.
+
+we can design in many ways -> its all about designing to our requirement -> dont do overkill.
+
+we can do bidirectional in many ways.
+can create city class and store theatres there if needed.
+ask if needed create a service layer for each
+then like simple backend microservice
+we call the service layer from interface
+service layer will hold all the data using maps as there is no repo layer
+
+
+
+   User selects City ➝ Shows Movies available in City ➝ User selects Movie ➝ Shows Theaters playing that Movie
+
+But under the hood, the data model should still map relationships accurately and efficiently for lookups like:
+
+City ➝ Theaters ➝ Screens ➝ Shows ➝ Movie
+
+
+
+-   Low-level design is just like building normal projects.
+-   Writing Service layer is common in Low level design interviews.
+-   There is no DB we are using -> so no Repository Layer.
+-   Data is stored in the service layer in-memory.
+-   Application layer acts as the single point of entry -> which the user can interact with.
+-   All other layers and functionalities are called by the application layer.
+-   We use Map data structure a lot if possible in the service layer, as it gives constant time look-up.
+-   Where the ids becomes the key in MAP.

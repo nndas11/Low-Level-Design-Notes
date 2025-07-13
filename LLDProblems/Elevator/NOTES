@@ -1,0 +1,13 @@
+
+
+    -   Elevator Car
+    -   Building
+    -   Floor
+    -   UP, DOWN, -> ENUM
+
+
+
+    - So in Low-level design is all about designing the component and their interaction etc..
+    - A person coming and clicking a button for elevator is an external factor -> we don't need that in design.
+    - In most cases, this is true.
+    - But there will be cases like game like tic-tac-toe, where you need person -> then only we can determine the winner.
